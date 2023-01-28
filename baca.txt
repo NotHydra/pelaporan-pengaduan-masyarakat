@@ -1,0 +1,71 @@
+Commit Message:
+    Format:
+        git commit -m "tipe: message"
+
+    Contoh:
+        git commit -m "feat: sistem login"
+
+    Tipe:
+        chore    : Commit yang berkaitan dengan konfigurasi seperti .gitignore
+        feat     : Commit yang berkaitan dengan fitur baru
+        fix      : Commit yang berkaitan dengan perbaikan bug
+        docs     : Commit yang berkaitan dengan dokumentasi
+        refactor : Commit yang berkaitan dengan perubahan nama seperti variabel, function, file dan directory
+        style    : Commit yang berkaitan dengan perubahan desain
+
+
+
+To-Do:
+    Authentication
+        Login
+            Masyarakat
+            Petugas
+
+        Register
+            Masyarakat
+            Petugas
+
+    Utama
+
+    Pengguna
+        Petugas
+            READ
+            CREATE
+
+            UPDATE
+            CHANGE PASSWORD
+            DELETE
+
+        Masyarakat
+            READ
+            CREATE
+
+            UPDATE
+            CHANGE PASSWORD
+            DELETE
+
+    Pengaduan
+        READ SELF
+        CREATE SELF
+
+        UPDATE SELF
+        DELETE SELF
+
+    Verval
+        ACCEPT
+        REJECT
+        CANCEL
+
+    Tanggapan
+        RESPONSE
+        CANCEL
+
+    Laporan
+
+    Pengaturan
+        Data Pribadi
+            READ
+            UPDATE
+            CHANGE PASSWORD
+
+        Logout DONE
