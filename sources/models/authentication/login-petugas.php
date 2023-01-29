@@ -15,7 +15,7 @@ include "$sourcePath/utilities/date.php";
 
 <head>
   <?php
-  $headTitle = "Login Masyarakat";
+  $headTitle = "Login Petugas";
   include "$sourcePath/components/head.php";
   include "$sourcePath/utilities/modal.php";
   ?>
@@ -55,18 +55,18 @@ include "$sourcePath/utilities/date.php";
 
           <div class="row">
             <div class="col-sm">
-              <button type="submit" class="btn btn-primary btn-block">Login Masyarakat</button>
+              <button type="submit" class="btn btn-primary btn-block">Login Petugas</button>
             </div>
           </div>
         </form>
 
         <div class="mt-1">
           <p class="mb-0">
-            <a href="./login-petugas.php" class="text-center">Login Petugas</a>
+            <a href="./login-masyarakat.php" class="text-center">Login Masyarakat</a>
           </p>
 
           <p class="mb-0">
-            <a href="./register-masyarakat.php" class="text-center">Register Masyarakat</a>
+            <a href="./register-petugas.php" class="text-center">Register Petugas</a>
           </p>
         </div>
       </div>
@@ -82,15 +82,19 @@ include "$sourcePath/utilities/date.php";
     $username = $_POST["username"];
     $password = md5($_POST["password"]);
 
-    $result = mysqli_query($connection, "SELECT id FROM masyarakat WHERE username='$username' AND password='$password';");
+    $result = mysqli_query($connection, "SELECT id, level, status FROM petugas WHERE username='$username' AND password='$password';");
 
     if (mysqli_num_rows($result) > 0) {
       $data = mysqli_fetch_assoc($result);
 
-      $_SESSION["id"] = $data["id"];
-      $_SESSION["type"] = "masyarakat";
+      if ($data["status"] == "aktif") {
+        $_SESSION["id"] = $data["id"];
+        $_SESSION["type"] = $data["level"];
 
-      echo "<script>successModal(null, '/$originalPath', 'login-container');</script>";
+        echo "<script>successModal(null, '/$originalPath', 'login-container');</script>";
+      } else {
+        echo "<script>errorModal('Akun belum aktif', null, 'login-container');</script>";
+      }
     } else {
       echo "<script>errorModal('Username atau password salah', null, 'login-container');</script>";
     }
