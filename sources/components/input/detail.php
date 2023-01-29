@@ -51,11 +51,11 @@ foreach ($inputArray as $inputObject) {
         } else {
             if (!in_array($inputObject["type"], ["textarea", "image"])) {
             ?>
-                <input class="form-control" id="<?php echo $inputObject["name"]; ?>" style="width: 100%;" type="<?php echo $inputObject["type"]; ?>" name="<?php echo $inputObject["name"]; ?>" value="<?php echo $inputObject["value"]; ?>" placeholder="<?php echo $inputObject["placeholder"]; ?>" disabled />
+                <input class="form-control" id="<?php echo $inputObject["name"]; ?>" style="width: 100%; opacity: 0.5;" type="<?php echo $inputObject["type"]; ?>" name="<?php echo $inputObject["name"]; ?>" value="<?php echo $inputObject["value"]; ?>" placeholder="<?php echo $inputObject["placeholder"]; ?>" disabled />
             <?php
             } else if ($inputObject["type"] == "textarea") {
             ?>
-                <textarea class="form-control" id="<?php echo $inputObject["name"]; ?>" style="width: 100%;" name="<?php echo $inputObject["name"]; ?>" placeholder="<?php echo $inputObject["placeholder"]; ?>" rows="5" disabled><?php echo $inputObject["value"]; ?></textarea>
+                <textarea class="form-control" id="<?php echo $inputObject["name"]; ?>" style="width: 100%; opacity: 0.5;" name="<?php echo $inputObject["name"]; ?>" placeholder="<?php echo $inputObject["placeholder"]; ?>" rows="5" disabled><?php echo $inputObject["value"]; ?></textarea>
             <?php
             } else if ($inputObject["type"] == "image") {
             ?>

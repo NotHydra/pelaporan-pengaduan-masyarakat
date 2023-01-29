@@ -61,6 +61,8 @@ To-Do:
         CANCEL
 
     Laporan
+        Per Tahun
+        Per Bulan
 
     Pengaturan
         Data Pribadi
