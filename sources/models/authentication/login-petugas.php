@@ -29,7 +29,7 @@ include "$sourcePath/utilities/date.php";
       </div>
 
       <div class="card-body">
-        <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST" onsubmit="return confirmModal('form', this, 'login-container');">
+        <form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST" onsubmit="return confirmModal('form', this, 'login-container');">
           <?php
           $inputArray = array(
             array(
