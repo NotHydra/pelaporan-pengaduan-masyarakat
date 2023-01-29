@@ -1,7 +1,11 @@
 <?php
 $sourcePath = "./sources";
 include "$sourcePath/utilities/environment.php";
+include "$sourcePath/utilities/connection.php";
+include "$sourcePath/utilities/session/start.php";
 include "$sourcePath/utilities/date.php";
+
+include "$sourcePath/middlewares/isNotAuthenticated.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +15,7 @@ include "$sourcePath/utilities/date.php";
   <?php
   $headTitle = "Utama";
   include "$sourcePath/components/head.php";
+  include "$sourcePath/utilities/modal.php";
   ?>
 </head>
 

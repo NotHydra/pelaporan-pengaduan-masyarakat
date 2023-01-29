@@ -174,7 +174,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link" role="button" onclick="confirmModal('location', '/<?php echo $originalPath; ?>/sources/models/authentication/logout.php')">
                                             <i class="nav-icon far fa-circle"></i>
                                             <p>Logout</p>
                                         </a>
