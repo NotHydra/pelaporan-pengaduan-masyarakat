@@ -82,14 +82,14 @@ include "$sourcePath/utilities/date.php";
     $username = $_POST["username"];
     $password = md5($_POST["password"]);
 
-    $result = mysqli_query($connection, "SELECT id, level, status FROM petugas WHERE username='$username' AND password='$password' AND dihapus='0';");
+    $result = mysqli_query($connection, "SELECT id, status FROM petugas WHERE username='$username' AND password='$password' AND dihapus='0';");
 
     if (mysqli_num_rows($result) > 0) {
       $data = mysqli_fetch_assoc($result);
 
       if ($data["status"] == "aktif") {
         $_SESSION["id"] = $data["id"];
-        $_SESSION["type"] = $data["level"];
+        $_SESSION["type"] = "petugas";
 
         echo "<script>successModal(null, '/$originalPath', 'login-container');</script>";
       } else {
