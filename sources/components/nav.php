@@ -63,8 +63,11 @@
                         "icon" => "far fa-circle",
                         "link" => "",
                         "child" => null,
-                    ],
-                    2 => [
+                    ]
+                ];
+
+                if (roleMinimum($sessionLevel, "administrator")) {
+                    $pageArray[2] = [
                         "id" => 2,
                         "title" => "Pengguna",
                         "icon" => "far fa-circle",
@@ -83,47 +86,48 @@
                                 "link" => "sources/models/pengguna/masyarakat",
                             ]
                         ]
-                    ],
-                    3 => [
+                    ];
+                };
+
+                if (roleSingle($sessionLevel, "masyarakat")) {
+                    $pageArray[3] = [
                         "id" => 3,
                         "title" => "Pengaduan",
                         "icon" => "far fa-circle",
                         "link" => "sources/models/pengaduan",
                         "child" => null,
-                    ],
-                    4 => [
+                    ];
+                };
+
+                if (roleMinimum($sessionLevel, "petugas")) {
+                    $pageArray[4] =  [
                         "id" => 4,
                         "title" => "Verval",
                         "icon" => "far fa-circle",
                         "link" => "sources/models/verval",
                         "child" => null,
-                    ],
-                    5 => [
+                    ];
+
+                    $pageArray[5] =  [
                         "id" => 5,
                         "title" => "Tanggapan",
                         "icon" => "far fa-circle",
                         "link" => "sources/models/tanggapan",
                         "child" => null,
-                    ],
-                    6 => [
-                        "id" => 6,
-                        "title" => "Laporan",
-                        "icon" => "far fa-circle",
-                        "link" => "sources/models/laporan",
-                        "child" => null,
-                    ],
-                    7 => [
-                        "id" => 7,
-                        "title" => "Pengaturan",
-                        "icon" => "far fa-circle",
-                        "link" => null,
-                        "child" => [
-                            1 => [
-                                "id" => 1,
-                                "title" => "Data Pribadi",
-                                "icon" => "far fa-circle",
-                                "link" => "sources/models/pengaturan/data-pribadi",
-                            ]
+                    ];
+                }
+
+                $pageArray[6] = [
+                    "id" => 6,
+                    "title" => "Pengaturan",
+                    "icon" => "far fa-circle",
+                    "link" => null,
+                    "child" => [
+                        1 => [
+                            "id" => 1,
+                            "title" => "Data Pribadi",
+                            "icon" => "far fa-circle",
+                            "link" => "sources/models/pengaturan/data-pribadi",
                         ]
                     ]
                 ];
@@ -164,7 +168,7 @@
                                 <?php
                                 };
 
-                                if ($pageObject["id"] == 7) {
+                                if ($pageObject["id"] == 6) {
                                 ?>
                                     <li class="nav-item">
                                         <a class="nav-link" role="button" onclick="changeColorTheme();">
