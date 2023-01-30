@@ -57,8 +57,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                       <form action="<?php $_SERVER["PHP_SELF"]; ?>?id=<?php echo $id; ?>" method="POST" onsubmit="return confirmModal('form', this);">
                         <?php
                         $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT nama, username, telepon, level, status FROM petugas WHERE id='$id' and dihapus='0';"));
-                        $inputArray = array(
-                          array(
+                        $inputArray = [
+                          [
                             "id" => 1,
                             "display" => "Nama",
                             "name" => "nama",
@@ -66,8 +66,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => $data["nama"],
                             "placeholder" => "Masukkan nama disini",
                             "enable" => false
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 2,
                             "display" => "Username",
                             "name" => "username",
@@ -75,9 +75,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => $data["username"],
                             "placeholder" => "Masukkan username disini",
                             "enable" => false
-
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 3,
                             "display" => "Telepon",
                             "name" => "telepon",
@@ -85,8 +84,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => $data["telepon"],
                             "placeholder" => "Masukkan telepon disini",
                             "enable" => false
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 4,
                             "display" => "Level",
                             "name" => "level",
@@ -94,8 +93,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => ucwords($data["level"]),
                             "placeholder" => "Masukkan level disini",
                             "enable" => false
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 5,
                             "display" => "Status",
                             "name" => "status",
@@ -103,8 +102,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => ucwords($data["status"]),
                             "placeholder" => "Masukkan status disini",
                             "enable" => false
-                          ),
-                        );
+                          ],
+                        ];
 
                         include "$sourcePath/components/input/detail.php";
                         ?>

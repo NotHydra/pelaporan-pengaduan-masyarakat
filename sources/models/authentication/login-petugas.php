@@ -31,24 +31,24 @@ include "$sourcePath/utilities/date.php";
       <div class="card-body">
         <form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST" onsubmit="return confirmModal('form', this, 'login-container');">
           <?php
-          $inputArray = array(
-            array(
+          $inputArray = [
+            [
               "id" => 1,
               "display" => "Username",
               "name" => "username",
               "type" => "text",
               "icon" => "user",
               "value" => isset($_POST["username"]) ? $_POST["username"] : null
-            ),
-            array(
+            ],
+            [
               "id" => 2,
               "display" => "Password",
               "name" => "password",
               "type" => "password",
               "icon" => "lock",
               "value" =>  isset($_POST["password"]) ? $_POST["password"] : null
-            )
-          );
+            ]
+          ];
 
           include "$sourcePath/components/input/basic.php";
           ?>

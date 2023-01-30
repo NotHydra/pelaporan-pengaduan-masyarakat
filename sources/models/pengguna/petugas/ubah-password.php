@@ -56,8 +56,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                     <div class="col-sm">
                       <form action="<?php $_SERVER["PHP_SELF"]; ?>?id=<?php echo $id; ?>" method="POST" onsubmit="return confirmModal('form', this);">
                         <?php
-                        $inputArray = array(
-                          array(
+                        $inputArray = [
+                          [
                             "id" => 1,
                             "display" => "Password",
                             "name" => "password",
@@ -65,8 +65,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => isset($_POST["password"]) ? $_POST["password"] : null,
                             "placeholder" => "Masukkan password disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 2,
                             "display" => "Konfirmasi Password",
                             "name" => "konfirmasi_password",
@@ -74,8 +74,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => isset($_POST["konfirmasi_password"]) ? $_POST["konfirmasi_password"] : null,
                             "placeholder" => "Masukkan konfirmasi password disini",
                             "enable" => true
-                          )
-                        );
+                          ]
+                        ];
 
                         include "$sourcePath/components/input/detail.php";
                         ?>

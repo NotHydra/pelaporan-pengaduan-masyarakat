@@ -49,8 +49,8 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                     <div class="col-sm">
                       <form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST" onsubmit="return confirmModal('form', this);">
                         <?php
-                        $inputArray = array(
-                          array(
+                        $inputArray = [
+                          [
                             "id" => 1,
                             "display" => "Nama",
                             "name" => "nama",
@@ -58,8 +58,8 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                             "value" => isset($_POST["nama"]) ? $_POST["nama"] : null,
                             "placeholder" => "Masukkan nama disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 2,
                             "display" => "Username",
                             "name" => "username",
@@ -68,8 +68,8 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                             "placeholder" => "Masukkan username disini",
                             "enable" => true
 
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 3,
                             "display" => "Telepon",
                             "name" => "telepon",
@@ -77,33 +77,33 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                             "value" => isset($_POST["telepon"]) ? $_POST["telepon"] : null,
                             "placeholder" => "Masukkan telepon disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 4,
                             "display" => "Level",
                             "name" => "level",
                             "type" => "select",
-                            "value" => array(array(
-                              array("superadministrator", "Superadministrator"),
-                              array("administrator", "Administrator"),
-                              array("petugas", "Petugas"),
-                            ), isset($_POST["level"]) ? $_POST["level"] : null),
+                            "value" => [[
+                              ["superadministrator", "Superadministrator"],
+                              ["administrator", "Administrator"],
+                              ["petugas", "Petugas"],
+                            ], isset($_POST["level"]) ? $_POST["level"] : null],
                             "placeholder" => "Masukkan level disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 5,
                             "display" => "Status",
                             "name" => "status",
                             "type" => "select",
-                            "value" => array(array(
-                              array("tidak aktif", "Tidak Aktif"),
-                              array("aktif", "Aktif"),
-                            ), isset($_POST["status"]) ? $_POST["status"] : null),
+                            "value" => [[
+                              ["tidak aktif", "Tidak Aktif"],
+                              ["aktif", "Aktif"],
+                            ], isset($_POST["status"]) ? $_POST["status"] : null],
                             "placeholder" => "Masukkan status disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 6,
                             "display" => "Password",
                             "name" => "password",
@@ -111,8 +111,8 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                             "value" => isset($_POST["password"]) ? $_POST["password"] : null,
                             "placeholder" => "Masukkan password disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 7,
                             "display" => "Konfirmasi Password",
                             "name" => "konfirmasi_password",
@@ -120,8 +120,8 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                             "value" => isset($_POST["konfirmasi_password"]) ? $_POST["konfirmasi_password"] : null,
                             "placeholder" => "Masukkan konfirmasi password disini",
                             "enable" => true
-                          )
-                        );
+                          ]
+                        ];
 
                         include "$sourcePath/components/input/detail.php";
                         ?>

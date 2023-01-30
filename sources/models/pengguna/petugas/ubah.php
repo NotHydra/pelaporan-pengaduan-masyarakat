@@ -57,8 +57,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                       <form action="<?php $_SERVER["PHP_SELF"]; ?>?id=<?php echo $id; ?>" method="POST" onsubmit="return confirmModal('form', this);">
                         <?php
                         $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT nama, username, telepon, level, status FROM petugas WHERE id='$id' and dihapus='0';"));
-                        $inputArray = array(
-                          array(
+                        $inputArray = [
+                          [
                             "id" => 1,
                             "display" => "Nama",
                             "name" => "nama",
@@ -66,8 +66,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => isset($_POST["nama"]) ? $_POST["nama"] : $data["nama"],
                             "placeholder" => "Masukkan nama disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 2,
                             "display" => "Username",
                             "name" => "username",
@@ -76,8 +76,8 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "placeholder" => "Masukkan username disini",
                             "enable" => true
 
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 3,
                             "display" => "Telepon",
                             "name" => "telepon",
@@ -85,33 +85,33 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "value" => isset($_POST["telepon"]) ? $_POST["telepon"] : $data["telepon"],
                             "placeholder" => "Masukkan telepon disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 4,
                             "display" => "Level",
                             "name" => "level",
                             "type" => "select",
-                            "value" => array(array(
-                              array("superadministrator", "Superadministrator"),
-                              array("administrator", "Administrator"),
-                              array("petugas", "Petugas"),
-                            ), isset($_POST["level"]) ? $_POST["level"] : $data["level"]),
+                            "value" => [[
+                              ["superadministrator", "Superadministrator"],
+                              ["administrator", "Administrator"],
+                              ["petugas", "Petugas"],
+                            ], isset($_POST["level"]) ? $_POST["level"] : $data["level"]],
                             "placeholder" => "Masukkan level disini",
                             "enable" => true
-                          ),
-                          array(
+                          ],
+                          [
                             "id" => 5,
                             "display" => "Status",
                             "name" => "status",
                             "type" => "select",
-                            "value" => array(array(
-                              array("tidak aktif", "Tidak Aktif"),
-                              array("aktif", "Aktif"),
-                            ), isset($_POST["status"]) ? $_POST["status"] : $data["status"]),
+                            "value" => [[
+                              ["tidak aktif", "Tidak Aktif"],
+                              ["aktif", "Aktif"],
+                            ], isset($_POST["status"]) ? $_POST["status"] : $data["status"]],
                             "placeholder" => "Masukkan status disini",
                             "enable" => true
-                          ),
-                        );
+                          ],
+                        ];
 
                         include "$sourcePath/components/input/detail.php";
                         ?>
