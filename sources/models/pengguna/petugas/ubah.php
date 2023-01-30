@@ -91,11 +91,10 @@ if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConver
                             "display" => "Level",
                             "name" => "level",
                             "type" => "select",
-                            "value" => [[
-                              ["superadministrator", "Superadministrator"],
+                            "value" => [$sessionLevel == "superadministrator" ? [
                               ["administrator", "Administrator"],
                               ["petugas", "Petugas"],
-                            ], isset($_POST["level"]) ? $_POST["level"] : $data["level"]],
+                            ] : [["petugas", "Petugas"]], isset($_POST["level"]) ? $_POST["level"] : $data["level"]],
                             "placeholder" => "Masukkan level disini",
                             "enable" => true
                           ],

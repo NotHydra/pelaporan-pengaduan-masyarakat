@@ -83,11 +83,10 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                             "display" => "Level",
                             "name" => "level",
                             "type" => "select",
-                            "value" => [[
-                              ["superadministrator", "Superadministrator"],
+                            "value" => [$sessionLevel == "superadministrator" ? [
                               ["administrator", "Administrator"],
                               ["petugas", "Petugas"],
-                            ], isset($_POST["level"]) ? $_POST["level"] : null],
+                            ] : [["petugas", "Petugas"]], isset($_POST["level"]) ? $_POST["level"] : null],
                             "placeholder" => "Masukkan level disini",
                             "enable" => true
                           ],
