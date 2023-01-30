@@ -2,7 +2,13 @@
 foreach ($inputArray as $inputObject) {
 ?>
     <div class="form-group">
-        <label for="<?php echo $inputObject["name"]; ?>"><?php echo $inputObject["display"]; ?></label>
+        <?php
+        if ($inputObject["display"] != null) {
+        ?>
+            <label for="<?php echo $inputObject["name"]; ?>"><?php echo $inputObject["display"]; ?></label>
+        <?php
+        }
+        ?>
 
         <?php
         if ($inputObject["enable"]) {
