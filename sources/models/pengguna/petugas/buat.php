@@ -20,6 +20,7 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
   <?php
   $headTitle = "Petugas";
   include "$sourcePath/components/head.php";
+  include "$sourcePath/components/select/head.php";
   include "$sourcePath/utilities/modal.php";
   ?>
 </head>
@@ -145,6 +146,7 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
 
   <?php
   include "$sourcePath/components/script.php";
+  include "$sourcePath/components/select/script.php";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = md5($_POST["password"]);

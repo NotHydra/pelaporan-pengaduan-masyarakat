@@ -20,8 +20,9 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
   <?php
   $headTitle = "Petugas";
   include "$sourcePath/components/head.php";
-  include "$sourcePath/utilities/modal.php";
   include "$sourcePath/components/data-table/head.php";
+  include "$sourcePath/components/select/head.php";
+  include "$sourcePath/utilities/modal.php";
   ?>
 </head>
 
@@ -202,6 +203,7 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
   <?php
   include "$sourcePath/components/script.php";
   include "$sourcePath/components/data-table/script.php";
+  include "$sourcePath/components/select/script.php";
   ?>
 </body>
 
