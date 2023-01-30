@@ -21,6 +21,8 @@
                     window.location = value;
                 } else if (type == "form") {
                     value.submit();
+                } else if (type == "action") {
+                    value();
                 };
             };
 
