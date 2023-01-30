@@ -16,7 +16,7 @@ if ($sessionType == "petugas") {
         $sessionStatus = "aktif";
     } else {
         echo "<script>window.location='/$originalPath/sources/models/authentication/logout.php'</script>";
-    }
+    };
 } else if ($sessionType == "masyarakat") {
     $result = mysqli_query($connection, "SELECT nik, nama, username, telepon FROM masyarakat WHERE id='$sessionId' AND dihapus='0';");
 
@@ -32,5 +32,5 @@ if ($sessionType == "petugas") {
         $sessionStatus = "aktif";
     } else {
         echo "<script>window.location='/$originalPath/sources/models/authentication/logout.php'</script>";
-    }
-}
+    };
+};

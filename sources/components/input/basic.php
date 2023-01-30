@@ -10,5 +10,5 @@ foreach ($inputArray as $inputObject) {
         </div>
     </div>
 <?php
-}
+};
 ?>

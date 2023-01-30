@@ -44,7 +44,7 @@ foreach ($inputArray as $inputObject) {
             ?>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" accept="image/*" id="<?php echo $inputObject["name"]; ?>" style="width: 100%;" name="<?php echo $inputObject["name"]; ?>" onchange="loadImage(this.id, event)" required>
+                        <input type="file" class="custom-file-input" accept="image/*" id="<?php echo $inputObject["name"]; ?>" style="width: 100%;" name="<?php echo $inputObject["name"]; ?>" onchange="loadImage(this.id, event);" required>
                         <label class="custom-file-label" for="<?php echo $inputObject["name"]; ?>"><?php echo $inputObject["placeholder"]; ?></label>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ foreach ($inputArray as $inputObject) {
 
         function loadImage(elementId, event) {
             document.getElementById(`${elementId}-image`).src = URL.createObjectURL(event.target.files[0]);
-        }
+        };
     </script>
 <?php
 }

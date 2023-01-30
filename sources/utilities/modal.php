@@ -3,7 +3,7 @@
     function confirmModal(type, value, hidden = null) {
         if (hidden != null) {
             document.getElementById(hidden).style.display = "none";
-        }
+        };
 
         Swal.fire({
             title: "Apakah anda yakin?",
@@ -27,8 +27,8 @@
             if (hidden != null) {
                 setTimeout(() => {
                     document.getElementById(hidden).style.display = "block";
-                }, 250)
-            }
+                }, 250);
+            };
         });
 
         return false;
@@ -37,7 +37,7 @@
     function errorModal(text, path, hidden = null) {
         if (hidden != null) {
             document.getElementById(hidden).style.display = "none";
-        }
+        };
 
         Swal.fire({
             title: "Gagal",
@@ -55,15 +55,15 @@
             if (hidden != null) {
                 setTimeout(() => {
                     document.getElementById(hidden).style.display = "block";
-                }, 250)
-            }
+                }, 250);
+            };
         });
     };
 
     function successModal(text, path, hidden = null) {
         if (hidden != null) {
             document.getElementById(hidden).style.display = "none";
-        }
+        };
 
         Swal.fire({
             title: "Berhasil",
@@ -81,8 +81,8 @@
             if (hidden != null) {
                 setTimeout(() => {
                     document.getElementById(hidden).style.display = "block";
-                }, 250)
-            }
+                }, 250);
+            };
         });
     };
 </script>

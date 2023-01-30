@@ -1,6 +1,6 @@
-<script src="<?php echo $sourcePath ?>/public/plugins/jquery/jquery.min.js"></script>
-<script src="<?php echo $sourcePath ?>/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo $sourcePath ?>/public/dist/js/adminlte.js"></script>
+<script src="<?php echo $sourcePath; ?>/public/plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo $sourcePath; ?>/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo $sourcePath; ?>/public/dist/js/adminlte.js"></script>
 
 <script>
     function defaultColorTheme() {
@@ -39,9 +39,9 @@
                 iconElement.classList.add("fa-moon");
 
                 textElement.innerHTML = "Tema Gelap";
-            }
-        } catch (err) {}
-    }
+            };
+        } catch (err) {};
+    };
 
     function changeColorTheme() {
         const bodyElement = document.getElementById("body-theme");
@@ -82,12 +82,12 @@
             textElement.innerHTML = "Tema Terang";
 
             localStorage.colorThemeType = "light";
-        }
-    }
+        };
+    };
 
     if (!localStorage.colorThemeType) {
         localStorage.colorThemeType = "light";
     };
 
-    defaultColorTheme()
+    defaultColorTheme();
 </script>
