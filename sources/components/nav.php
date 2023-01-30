@@ -60,7 +60,7 @@
                     1 => [
                         "id" => 1,
                         "title" => "Utama",
-                        "icon" => "far fa-circle",
+                        "icon" => "fas fa-home",
                         "link" => "",
                         "child" => null,
                     ]
@@ -70,19 +70,19 @@
                     $pageArray[2] = [
                         "id" => 2,
                         "title" => "Pengguna",
-                        "icon" => "far fa-circle",
+                        "icon" => "fas fa-users",
                         "link" => null,
                         "child" => [
                             1 => [
                                 "id" => 1,
                                 "title" => "Petugas",
-                                "icon" => "far fa-circle",
+                                "icon" => "fas fa-user-tie",
                                 "link" => "sources/models/pengguna/petugas",
                             ],
                             2 => [
                                 "id" => 2,
                                 "title" => "Masyarakat",
-                                "icon" => "far fa-circle",
+                                "icon" => "fas fa-user",
                                 "link" => "sources/models/pengguna/masyarakat",
                             ]
                         ]
@@ -93,7 +93,7 @@
                     $pageArray[3] = [
                         "id" => 3,
                         "title" => "Pengaduan",
-                        "icon" => "far fa-circle",
+                        "icon" => "fas fa-exclamation-circle",
                         "link" => "sources/models/pengaduan",
                         "child" => null,
                     ];
@@ -103,7 +103,7 @@
                     $pageArray[4] =  [
                         "id" => 4,
                         "title" => "Verval",
-                        "icon" => "far fa-circle",
+                        "icon" => "fas fa-check-circle",
                         "link" => "sources/models/verval",
                         "child" => null,
                     ];
@@ -111,7 +111,7 @@
                     $pageArray[5] =  [
                         "id" => 5,
                         "title" => "Tanggapan",
-                        "icon" => "far fa-circle",
+                        "icon" => "fas fa-clipboard",
                         "link" => "sources/models/tanggapan",
                         "child" => null,
                     ];
@@ -120,13 +120,13 @@
                 $pageArray[6] = [
                     "id" => 6,
                     "title" => "Pengaturan",
-                    "icon" => "far fa-circle",
+                    "icon" => "fas fa-cog",
                     "link" => null,
                     "child" => [
                         1 => [
                             "id" => 1,
                             "title" => "Data Pribadi",
-                            "icon" => "far fa-circle",
+                            "icon" => "fas fa-user-circle",
                             "link" => "sources/models/pengaturan/data-pribadi",
                         ]
                     ]
@@ -172,14 +172,14 @@
                                 ?>
                                     <li class="nav-item">
                                         <a class="nav-link" role="button" onclick="confirmModal('action', changeColorTheme);">
-                                            <i class="nav-icon far fa-sun" id="icon-theme"></i>
+                                            <i class="nav-icon fas fa-sun" id="icon-theme"></i>
                                             <p id="text-theme">Tema Terang</p>
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="nav-link" role="button" onclick="confirmModal('location', '/<?php echo $originalPath; ?>/sources/models/authentication/logout.php')">
-                                            <i class="nav-icon far fa-circle"></i>
+                                            <i class="nav-icon fas fa-sign-out-alt"></i>
                                             <p>Logout</p>
                                         </a>
                                     </li>
