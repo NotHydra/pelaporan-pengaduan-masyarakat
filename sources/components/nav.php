@@ -171,7 +171,7 @@
                                 if ($pageObject["id"] == 6) {
                                 ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" role="button" onclick="changeColorTheme();">
+                                        <a class="nav-link" role="button" onclick="confirmModal('action', changeColorTheme);">
                                             <i class="nav-icon far fa-sun" id="icon-theme"></i>
                                             <p id="text-theme">Tema Terang</p>
                                         </a>
