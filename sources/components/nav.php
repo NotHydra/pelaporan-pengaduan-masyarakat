@@ -66,7 +66,7 @@
                     ]
                 ];
 
-                if (roleMinimum($sessionLevel, "administrator")) {
+                if (roleCheckMinimum($sessionLevel, "administrator")) {
                     $pageArray[2] = [
                         "id" => 2,
                         "title" => "Pengguna",
@@ -89,7 +89,7 @@
                     ];
                 };
 
-                if (roleSingle($sessionLevel, "masyarakat")) {
+                if (roleCheckSingle($sessionLevel, "masyarakat")) {
                     $pageArray[3] = [
                         "id" => 3,
                         "title" => "Pengaduan",
@@ -99,7 +99,7 @@
                     ];
                 };
 
-                if (roleMinimum($sessionLevel, "petugas")) {
+                if (roleCheckMinimum($sessionLevel, "petugas")) {
                     $pageArray[4] =  [
                         "id" => 4,
                         "title" => "Verval",

@@ -13,16 +13,16 @@ function roleConvert($role)
     return $roleLevel[$role];
 }
 
-function roleMinimum($role, $minimumLevel)
+function roleCheckMinimum($role, $level)
 {
-    if (roleConvert($role) >= roleConvert($minimumLevel)) {
+    if (roleConvert($role) >= roleConvert($level)) {
         return true;
     } else {
         return false;
     }
 }
 
-function roleSingle($role, $level)
+function roleCheckSingle($role, $level)
 {
     if (roleConvert($role) == roleConvert($level)) {
         return true;
@@ -31,13 +31,16 @@ function roleSingle($role, $level)
     }
 }
 
-function roleMultiple($role, $level)
+function roleGuardMinimum($role, $level, $path)
 {
-    if (in_array(roleConvert($role), array_map(function ($role) {
-        return roleConvert($role);
-    }, $level))) {
-        return true;
-    } else {
-        return false;
+    if (!roleCheckMinimum($role, $level)) {
+        echo "<script>window.location='$path';</script>";
+    }
+}
+
+function roleGuardSingle($role, $level, $path)
+{
+    if (!roleCheckSingle($role, $level)) {
+        echo "<script>window.location='$path';</script>";
     }
 }
