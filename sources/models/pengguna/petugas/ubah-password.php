@@ -10,6 +10,8 @@ include "$sourcePath/utilities/session/data.php";
 include "$sourcePath/utilities/role.php";
 include "$sourcePath/utilities/date.php";
 
+roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
+
 $id = $_GET["id"];
 if (mysqli_num_rows(mysqli_query($connection, "SELECT id FROM petugas WHERE id='$id' and dihapus='0';")) <= 0) {
   echo "<script>window.location='.';</script>";

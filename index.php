@@ -9,6 +9,8 @@ include "$sourcePath/middlewares/isNotAuthenticated.php";
 include "$sourcePath/utilities/session/data.php";
 include "$sourcePath/utilities/role.php";
 include "$sourcePath/utilities/date.php";
+
+roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/authentication/logout.php");
 ?>
 
 <!DOCTYPE html>
