@@ -42,6 +42,68 @@ include "$sourcePath/utilities/date.php";
                 ?>
 
                 <div class="card-body">
+                  <form class="row mb-2" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <div class="col-sm">
+                      <?php
+                      $inputArray = [
+                        [
+                          "id" => 1,
+                          "display" => null,
+                          "name" => "tahun",
+                          "type" => "select",
+                          "value" => [
+                            array_merge([[0, "Semua"]], array_map(function ($yearObject) {
+                              return [$yearObject[0], $yearObject[0]];
+                            }, mysqli_fetch_all(mysqli_query($connection, "SELECT DISTINCT YEAR(dibuat) as `tahun` FROM petugas ORDER BY dibuat DESC;")))), isset($_POST["tahun"]) ? $_POST["tahun"] : null
+                          ],
+                          "placeholder" => "Pilih tahun disini",
+                          "enable" => true
+                        ],
+                      ];
+
+                      include "$sourcePath/components/input/detail.php";
+                      ?>
+                    </div>
+
+                    <div class="col-sm">
+                      <?php
+                      $inputArray = [
+                        [
+                          "id" => 1,
+                          "display" => null,
+                          "name" => "bulan",
+                          "type" => "select",
+                          "value" => [
+                            [
+                              [0, "Semua"],
+                              [1, "Januari"],
+                              [2, "Februari"],
+                              [3, "Maret"],
+                              [4, "April"],
+                              [5, "Mei"],
+                              [6, "Juni"],
+                              [7, "Juli"],
+                              [8, "Agustus"],
+                              [9, "September"],
+                              [10, "Oktober"],
+                              [11, "November"],
+                              [12, "Desember"]
+                            ], isset($_POST["bulan"]) ? $_POST["bulan"] : null
+                          ],
+                          "placeholder" => "Pilih bulan disini",
+                          "enable" => true
+                        ],
+                      ];
+
+                      include "$sourcePath/components/input/detail.php";
+                      ?>
+                    </div>
+
+                    <div class="col-sm">
+                      <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i> Cari</button>
+                    </div>
+                  </form>
+
                   <div class="row">
                     <div class="col-sm">
                       <table id="main-table" class="table table-bordered table-striped table-sm">
@@ -61,7 +123,23 @@ include "$sourcePath/utilities/date.php";
                         <tbody>
                           <?php
                           $currentDate = date("Y-m-d H:i:s");
-                          $result = mysqli_query($connection, "SELECT id, nama, username, telepon, level, status, dibuat, diubah FROM petugas WHERE dihapus='0';");
+
+                          $extraFilter = "";
+                          if (isset($_POST["tahun"])) {
+                            $tahunFilter = $_POST["tahun"];
+                            if ($tahunFilter != 0) {
+                              $extraFilter = $extraFilter . " AND YEAR(dibuat)='$tahunFilter'";
+                            };
+                          };
+
+                          if (isset($_POST["bulan"])) {
+                            $bulanFilter = $_POST["bulan"];
+                            if ($bulanFilter != 0) {
+                              $extraFilter = $extraFilter . " AND MONTH(dibuat)='$bulanFilter'";
+                            };
+                          };
+
+                          $result = mysqli_query($connection, "SELECT id, nama, username, telepon, level, status, dibuat, diubah FROM petugas WHERE dihapus='0' $extraFilter ORDER BY dibuat DESC;");
                           foreach ($result as $i => $data) {
                           ?>
                             <tr>
