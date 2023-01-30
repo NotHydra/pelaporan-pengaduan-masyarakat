@@ -13,7 +13,9 @@ include "$sourcePath/utilities/date.php";
 roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
 
 $id = $_GET["id"];
-if (mysqli_num_rows(mysqli_query($connection, "SELECT id FROM petugas WHERE id='$id' and dihapus='0';")) <= 0) {
+$result = mysqli_query($connection, "SELECT level FROM petugas WHERE id='$id' and dihapus='0';");
+$data = mysqli_fetch_assoc($result);
+if (mysqli_num_rows($result) <= 0 or !roleCheckMinimum($sessionLevel, roleConvert($data["level"]) + 1)) {
   echo "<script>window.location='.';</script>";
 };
 ?>

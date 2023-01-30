@@ -156,19 +156,25 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                               <td class="text-center align-middle"><?php echo dateInterval($data["diubah"], $currentDate); ?></td>
 
                               <td class="text-center align-middle">
-                                <div class="btn-group">
-                                  <a class="btn btn-app bg-warning m-0" href="./ubah.php?id=<?php echo $data['id']; ?>">
-                                    <i class="fas fa-edit"></i> Ubah
-                                  </a>
+                                <?php
+                                if (roleCheckMinimum($sessionLevel, roleConvert($data["level"]) + 1)) {
+                                ?>
+                                  <div class="btn-group">
+                                    <a class="btn btn-app bg-warning m-0" href="./ubah.php?id=<?php echo $data['id']; ?>">
+                                      <i class="fas fa-edit"></i> Ubah
+                                    </a>
 
-                                  <a class="btn btn-app bg-danger m-0" href="./ubah-password.php?id=<?php echo $data['id']; ?>">
-                                    <i class="fas fa-lock"></i> Ubah Password
-                                  </a>
+                                    <a class="btn btn-app bg-danger m-0" href="./ubah-password.php?id=<?php echo $data['id']; ?>">
+                                      <i class="fas fa-lock"></i> Ubah Password
+                                    </a>
 
-                                  <a class="btn btn-app bg-danger m-0" href="./hapus.php?id=<?php echo $data['id']; ?>">
-                                    <i class="fas fa-trash"></i> Hapus
-                                  </a>
-                                </div>
+                                    <a class="btn btn-app bg-danger m-0" href="./hapus.php?id=<?php echo $data['id']; ?>">
+                                      <i class="fas fa-trash"></i> Hapus
+                                    </a>
+                                  </div>
+                                <?php
+                                };
+                                ?>
                               </td>
                             </tr>
                           <?php
