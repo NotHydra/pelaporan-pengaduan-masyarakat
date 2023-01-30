@@ -10,23 +10,36 @@
 <script src="<?php echo $sourcePath; ?>/public/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?php echo $sourcePath; ?>/public/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo $sourcePath; ?>/public/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<?php
+$tableButton = [
+    "colvis"
+];
+
+if (roleMinimum($sessionLevel, "administrator")) {
+    array_push($tableButton, [
+        "extend" => "excel",
+        "exportOptions" => [
+            "columns" => [".export"]
+        ]
+    ]);
+
+    array_push($tableButton, [
+        "extend" => "pdf",
+        "exportOptions" => [
+            "columns" => [".export"]
+        ]
+    ]);
+}
+?>
+
 <script>
     $(function() {
         $("#main-table").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": [{
-                extend: 'excel',
-                exportOptions: {
-                    columns: [".export"]
-                }
-            }, {
-                extend: 'pdf',
-                exportOptions: {
-                    columns: [".export"]
-                }
-            }, "colvis"]
+            "buttons": <?php echo json_encode($tableButton); ?>
         }).buttons().container().appendTo('#main-table_wrapper .col-md-6:eq(0)');
     });
 </script>
