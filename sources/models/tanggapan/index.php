@@ -58,7 +58,7 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                           "value" => [
                             array_merge([[0, "Semua"]], array_map(function ($yearObject) {
                               return [$yearObject[0], $yearObject[0]];
-                            }, mysqli_fetch_all(mysqli_query($connection, "SELECT DISTINCT YEAR(dibuat) FROM pengaduan WHERE status='diproses' OR status='selesai' ORDER BY dibuat DESC;")))), isset($_POST["tahun"]) ? $_POST["tahun"] : null
+                            }, mysqli_fetch_all(mysqli_query($connection, "SELECT DISTINCT YEAR(dibuat) FROM pengaduan WHERE (status='diproses' OR status='selesai') AND dihapus='0' ORDER BY dibuat DESC;")))), isset($_POST["tahun"]) ? $_POST["tahun"] : null
                           ],
                           "placeholder" => "Pilih tahun disini",
                           "enable" => true
@@ -161,7 +161,7 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
 
                               <td class="text-center align-middle">
                                 <div class="btn-group">
-                                  <a class="btn btn-app bg-primary m-0" href="tanggapan.php?id=<?php echo $data['id']; ?>">
+                                  <a class="btn btn-app bg-primary m-0" href="./daftar.php?id=<?php echo $id; ?>">
                                     <i class="fas fa-clipboard"></i> Tanggapan
                                   </a>
 
@@ -207,9 +207,7 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
   include "$sourcePath/components/script.php";
   include "$sourcePath/components/data-table/script.php";
   include "$sourcePath/components/select/script.php";
-  ?>
 
-  <?php
   if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["id"]) and isset($_GET["type"])) {
       $id = $_GET["id"];
