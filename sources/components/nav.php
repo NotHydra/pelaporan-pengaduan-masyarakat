@@ -11,7 +11,7 @@
 
     <ul class="navbar-nav ml-auto">
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link"><?php echo ucwords($sessionUsername); ?> Sebagai <?php echo ucwords($sessionLevel); ?></a>
+            <a class="nav-link" href="/<?php echo $originalPath; ?>/sources/models/pengaturan/data-pribadi"><?php echo ucwords($sessionUsername); ?> Sebagai <?php echo ucwords($sessionLevel); ?></a>
         </li>
 
         <li class="nav-item">
