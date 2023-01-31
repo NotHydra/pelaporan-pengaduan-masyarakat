@@ -10,7 +10,7 @@ include "$sourcePath/utilities/session/data.php";
 include "$sourcePath/utilities/role.php";
 include "$sourcePath/utilities/date.php";
 
-roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
+roleGuardMinimum($sessionLevel, "administrator", "/$originalPath");
 ?>
 
 <!DOCTYPE html>
