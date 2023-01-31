@@ -1,1 +1,4 @@
 note.txt
+
+sources/public/dist/img/storage/*
+!sources/public/dist/img/storage/*.gitkeep

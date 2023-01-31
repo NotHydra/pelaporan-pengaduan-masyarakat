@@ -21,9 +21,9 @@ To-Do:
             Masyarakat DONE
             Petugas DONE
 
-        Register
-            Masyarakat
-            Petugas
+        Register DONE
+            Masyarakat DONE
+            Petugas DONE
 
     Utama DONE
 
@@ -48,16 +48,17 @@ To-Do:
         READ SELF
         CREATE SELF
 
-        DELETE SELF
+        DELETE SELF (No Response)
+        RESPONSE SELF (Process And Done)
 
     Verval
-        ACCEPT
-        REJECT
-        CANCEL
+        ACCEPT (No Response)
+        REJECT (No Response)
+        CANCEL (Accept Or Reject)
 
     Tanggapan
-        RESPONSE
-        CANCEL
+        RESPONSE (Process)
+        DONE (Process)
 
     Laporan DONE
         Per Tahun DONE
