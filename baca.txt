@@ -16,7 +16,7 @@ Commit Message:
 
 
 To-Do:
-    Authentication
+    Authentication DONE
         Login DONE
             Masyarakat DONE
             Petugas DONE
@@ -44,21 +44,21 @@ To-Do:
             CHANGE PASSWORD DONE
             DELETE DONE
 
-    Pengaduan
-        READ SELF
-        CREATE SELF
+    Pengaduan DONE
+        READ SELF DONE
+        CREATE SELF DONE
 
-        DELETE SELF (No Response)
-        RESPONSE SELF (Process And Done)
+        DELETE SELF (No Response) DONE
+        RESPONSE SELF (Process And Done) DONE
 
     Verval
-        ACCEPT (No Response)
-        REJECT (No Response)
-        CANCEL (Accept Or Reject)
+        ACCEPT (No Response) DONE
+        REJECT (No Response) DONE
+        CANCEL (Accept Or Reject) DONE
 
     Tanggapan
-        RESPONSE (Process)
-        DONE (Process)
+        RESPONSE (Process) DONE
+        DONE (Process) DONE
 
     Laporan DONE
         Per Tahun DONE

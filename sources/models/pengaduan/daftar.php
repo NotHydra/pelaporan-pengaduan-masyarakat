@@ -11,6 +11,12 @@ include "$sourcePath/utilities/role.php";
 include "$sourcePath/utilities/date.php";
 
 roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/authentication/logout.php");
+
+$idPengaduan = $_GET["id"];
+$resultPengaduan = mysqli_query($connection, "SELECT status FROM pengaduan WHERE id='$idPengaduan' AND (status='diproses' OR status='selesai') AND dihapus='0';");
+if (mysqli_num_rows($resultPengaduan) <= 0) {
+  echo "<script>window.location='.';</script>";
+};
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +47,7 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
               <div class="card">
                 <?php
                 $pageItemObject = $pageArray[$navActive[0]];
-                $extraTitle = "Utama";
+                $extraTitle = "Daftar";
                 include "$sourcePath/components/content/head.php";
                 ?>
 
@@ -58,7 +64,7 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
                           "value" => [
                             array_merge([[0, "Semua"]], array_map(function ($yearObject) {
                               return [$yearObject[0], $yearObject[0]];
-                            }, mysqli_fetch_all(mysqli_query($connection, "SELECT DISTINCT YEAR(dibuat) FROM pengaduan WHERE id_masyarakat='$sessionId' ORDER BY dibuat DESC;")))), isset($_POST["tahun"]) ? $_POST["tahun"] : null
+                            }, mysqli_fetch_all(mysqli_query($connection, "SELECT DISTINCT YEAR(dibuat) FROM tanggapan WHERE id_pengaduan='$idPengaduan' AND dihapus='0' ORDER BY dibuat DESC;")))), isset($_POST["tahun"]) ? $_POST["tahun"] : null
                           ],
                           "placeholder" => "Pilih tahun disini",
                           "enable" => true
@@ -114,12 +120,10 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
                         <thead>
                           <tr>
                             <th class="text-center align-middle export">No.</th>
-                            <th class="text-center align-middle export">Foto</th>
-                            <th class="text-center align-middle export">Isi Pengaduan</th>
-                            <th class="text-center align-middle export">Status</th>
+                            <th class="text-center align-middle export">Petugas</th>
+                            <th class="text-center align-middle export">Isi Tanggapan</th>
                             <th class="text-center align-middle export">Dibuat</th>
                             <th class="text-center align-middle export">Diubah</th>
-                            <th class="text-center align-middle export">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -141,38 +145,17 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
                             };
                           };
 
-                          $result = mysqli_query($connection, "SELECT id, foto, isi_pengaduan, status, dibuat, diubah FROM pengaduan WHERE id_masyarakat='$sessionId' AND dihapus='0' $extraFilter ORDER BY dibuat DESC;");
+                          $result = mysqli_query($connection, "SELECT id, id_petugas, isi_tanggapan, dibuat, diubah FROM tanggapan WHERE id_pengaduan='$idPengaduan' AND dihapus='0' $extraFilter ORDER BY dibuat DESC;");
                           foreach ($result as $i => $data) {
+                            $idPetugas = $data["id_petugas"];
+                            $dataPetugas = mysqli_fetch_assoc(mysqli_query($connection, "SELECT nama FROM petugas WHERE id='$idPetugas' AND dihapus='0';"));
                           ?>
                             <tr>
                               <td class="text-center align-middle"><?php echo $i + 1; ?>.</td>
-                              <td class="text-center align-middle">
-                                <img class="m-auto d-block" src="<?php echo $sourcePath; ?>/public/dist/img/storage/<?php echo $data["foto"]; ?>" width="400px">
-                              </td>
-                              <td class="align-middle"><?php echo $data["isi_pengaduan"]; ?></td>
-                              <td class="text-center align-middle"><?php echo ucwords($data["status"]); ?></td>
+                              <td class="text-center align-middle"><?php echo $dataPetugas["nama"]; ?></td>
+                              <td class="align-middle"><?php echo $data["isi_tanggapan"]; ?></td>
                               <td class="text-center align-middle"><?php echo $data["dibuat"]; ?></td>
                               <td class="text-center align-middle"><?php echo dateInterval($data["diubah"], $currentDate); ?></td>
-
-                              <td class="text-center align-middle">
-                                <div class="btn-group">
-                                  <?php
-                                  if ($data["status"] == "belum direspon") {
-                                  ?>
-                                    <a class="btn btn-app bg-danger m-0" href="./hapus.php?id=<?php echo $data['id']; ?>">
-                                      <i class="fas fa-trash"></i> Hapus
-                                    </a>
-                                  <?php
-                                  } else if (in_array($data["status"], ["diproses", "selesai"])) {
-                                  ?>
-                                    <a class="btn btn-app bg-primary m-0" href="./daftar.php?id=<?php echo $data['id']; ?>">
-                                      <i class="fas fa-clipboard"></i> Tanggapan
-                                    </a>
-                                  <?php
-                                  };
-                                  ?>
-                                </div>
-                              </td>
                             </tr>
                           <?php
                           };
@@ -182,7 +165,7 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
                     </div>
                   </div>
 
-                  <a class="btn btn-primary btn-block mt-1" href="./buat.php"><i class="fa fa-plus"></i> Buat</a>
+                  <a class="btn btn-danger btn-block" role="button" onclick="confirmModal('location', '.');"><i class="fa fa-undo"></i> Kembali</a>
                 </div>
               </div>
             </div>
