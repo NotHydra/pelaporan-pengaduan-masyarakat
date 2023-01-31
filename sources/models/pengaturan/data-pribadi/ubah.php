@@ -18,7 +18,7 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
 
 <head>
   <?php
-  $headTitle = "Petugas";
+  $headTitle = "Data Pribadi";
   include "$sourcePath/components/head.php";
   include "$sourcePath/components/select/head.php";
   include "$sourcePath/utilities/modal.php";

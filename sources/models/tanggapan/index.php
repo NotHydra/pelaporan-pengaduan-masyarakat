@@ -214,12 +214,12 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
       $type = $_GET["type"];
 
       try {
-        $status = mysqli_fetch_assoc(mysqli_query($connection, "SELECT status FROM pengaduan WHERE id=$id;"))["status"];
+        $status = mysqli_fetch_assoc(mysqli_query($connection, "SELECT status FROM pengaduan WHERE id=$id AND dihapus='0';"))["status"];
 
         if ($type == "selesai" and $status == "diproses") {
-          $result = mysqli_query($connection, "UPDATE pengaduan SET status='selesai' WHERE id='$id';");
+          $result = mysqli_query($connection, "UPDATE pengaduan SET status='selesai' WHERE id='$id' AND dihapus='0';");
         } else if ($type == "batal" and $status == "selesai") {
-          $result = mysqli_query($connection, "UPDATE pengaduan SET status='diproses' WHERE id='$id';");
+          $result = mysqli_query($connection, "UPDATE pengaduan SET status='diproses' WHERE id='$id' AND dihapus='0';");
         } else {
           $result = null;
         };

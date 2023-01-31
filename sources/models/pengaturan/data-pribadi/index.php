@@ -46,7 +46,7 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm">
-                      <form action="<?php $_SERVER["PHP_SELF"]; ?>?id=<?php echo $sessionId; ?>" method="POST" onsubmit="return confirmModal('form', this);">
+                      <form>
                         <?php
                         if ($sessionType == "masyarakat") {
                           $inputArray = [

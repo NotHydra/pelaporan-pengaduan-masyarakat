@@ -13,7 +13,7 @@ include "$sourcePath/utilities/date.php";
 roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/authentication/logout.php");
 
 $id = $_GET["id"];
-$result = mysqli_query($connection, "SELECT id FROM pengaduan WHERE id='$id' AND id_masyarakat='$sessionId' AND dihapus='0';");
+$result = mysqli_query($connection, "SELECT id FROM pengaduan WHERE id='$id' AND id_masyarakat='$sessionId' AND status='belum direspon' AND dihapus='0';");
 if (mysqli_num_rows($result) <= 0) {
   echo "<script>window.location='.';</script>";
 };
@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) <= 0) {
 
 <head>
   <?php
-  $headTitle = "Petugas";
+  $headTitle = "Pengaduan";
   include "$sourcePath/components/head.php";
   include "$sourcePath/components/select/head.php";
   include "$sourcePath/utilities/modal.php";
@@ -53,9 +53,9 @@ if (mysqli_num_rows($result) <= 0) {
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm">
-                      <form action="<?php $_SERVER["PHP_SELF"]; ?>?id=<?php echo $id; ?>" method="POST" onsubmit="return confirmModal('form', this);">
+                      <form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST" onsubmit="return confirmModal('form', this);">
                         <?php
-                        $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT foto, isi_pengaduan FROM pengaduan WHERE id='$id' AND id_masyarakat='$sessionId' AND dihapus='0';"));
+                        $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT foto, isi_pengaduan FROM pengaduan WHERE id='$id' AND id_masyarakat='$sessionId' AND status='belum direspon' AND dihapus='0';"));
                         $inputArray = [
                           [
                             "id" => 1,
@@ -105,7 +105,7 @@ if (mysqli_num_rows($result) <= 0) {
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
-      $result = mysqli_query($connection, "UPDATE pengaduan SET dihapus='1' WHERE id='$id' AND id_masyarakat='$sessionId';");
+      $result = mysqli_query($connection, "UPDATE pengaduan SET dihapus='1' WHERE id='$id' AND id_masyarakat='$sessionId' AND status='belum direspon';");
 
       if ($result) {
         echo "<script>successModal(null, '.');</script>";

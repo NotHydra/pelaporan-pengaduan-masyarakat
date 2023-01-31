@@ -12,8 +12,8 @@ include "$sourcePath/utilities/date.php";
 
 roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/authentication/logout.php");
 
-$idPengaduan = $_GET["id"];
-$resultPengaduan = mysqli_query($connection, "SELECT status FROM pengaduan WHERE id='$idPengaduan' AND (status='diproses' OR status='selesai') AND dihapus='0';");
+$id = $_GET["id"];
+$resultPengaduan = mysqli_query($connection, "SELECT status FROM pengaduan WHERE id='$id' AND (status='diproses' OR status='selesai') AND dihapus='0';");
 if (mysqli_num_rows($resultPengaduan) <= 0) {
   echo "<script>window.location='.';</script>";
 };
@@ -64,7 +64,7 @@ if (mysqli_num_rows($resultPengaduan) <= 0) {
                           "value" => [
                             array_merge([[0, "Semua"]], array_map(function ($yearObject) {
                               return [$yearObject[0], $yearObject[0]];
-                            }, mysqli_fetch_all(mysqli_query($connection, "SELECT DISTINCT YEAR(dibuat) FROM tanggapan WHERE id_pengaduan='$idPengaduan' AND dihapus='0' ORDER BY dibuat DESC;")))), isset($_POST["tahun"]) ? $_POST["tahun"] : null
+                            }, mysqli_fetch_all(mysqli_query($connection, "SELECT DISTINCT YEAR(dibuat) FROM tanggapan WHERE id_pengaduan='$id' AND dihapus='0' ORDER BY dibuat DESC;")))), isset($_POST["tahun"]) ? $_POST["tahun"] : null
                           ],
                           "placeholder" => "Pilih tahun disini",
                           "enable" => true
@@ -145,7 +145,7 @@ if (mysqli_num_rows($resultPengaduan) <= 0) {
                             };
                           };
 
-                          $result = mysqli_query($connection, "SELECT id, id_petugas, isi_tanggapan, dibuat, diubah FROM tanggapan WHERE id_pengaduan='$idPengaduan' AND dihapus='0' $extraFilter ORDER BY dibuat DESC;");
+                          $result = mysqli_query($connection, "SELECT id, id_petugas, isi_tanggapan, dibuat, diubah FROM tanggapan WHERE id_pengaduan='$id' AND dihapus='0' $extraFilter ORDER BY dibuat DESC;");
                           foreach ($result as $i => $data) {
                             $idPetugas = $data["id_petugas"];
                             $dataPetugas = mysqli_fetch_assoc(mysqli_query($connection, "SELECT nama FROM petugas WHERE id='$idPetugas' AND dihapus='0';"));

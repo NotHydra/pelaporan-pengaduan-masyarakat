@@ -13,7 +13,7 @@ include "$sourcePath/utilities/date.php";
 roleGuardMinimum($sessionLevel, "administrator", "/$originalPath");
 
 $id = $_GET["id"];
-$result = mysqli_query($connection, "SELECT id FROM masyarakat WHERE id='$id' and dihapus='0';");
+$result = mysqli_query($connection, "SELECT id FROM masyarakat WHERE id='$id' AND dihapus='0';");
 if (mysqli_num_rows($result) <= 0) {
   echo "<script>window.location='.';</script>";
 };
@@ -53,9 +53,9 @@ if (mysqli_num_rows($result) <= 0) {
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm">
-                      <form action="<?php $_SERVER["PHP_SELF"]; ?>?id=<?php echo $id; ?>" method="POST" onsubmit="return confirmModal('form', this);">
+                      <form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST" onsubmit="return confirmModal('form', this);">
                         <?php
-                        $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT nik, nama, username, telepon FROM masyarakat WHERE id='$id' and dihapus='0';"));
+                        $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT nik, nama, username, telepon FROM masyarakat WHERE id='$id' AND dihapus='0';"));
                         $inputArray = [
                           [
                             "id" => 1,
@@ -122,7 +122,7 @@ if (mysqli_num_rows($result) <= 0) {
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
-      $result = mysqli_query($connection, "UPDATE masyarakat SET dihapus='1' WHERE id='$id';");
+      $result = mysqli_query($connection, "UPDATE masyarakat SET dihapus='1' WHERE id='$id' AND dihapus='0';");
 
       if ($result) {
         echo "<script>successModal(null, '.');</script>";
