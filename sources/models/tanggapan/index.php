@@ -142,7 +142,7 @@ roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
                             };
                           };
 
-                          $result = mysqli_query($connection, "SELECT id, id_masyarakat, foto, isi_pengaduan, status, dibuat, diubah FROM pengaduan WHERE status='diproses' OR status='selesai' AND dihapus='0' $extraFilter ORDER BY dibuat DESC;");
+                          $result = mysqli_query($connection, "SELECT id, id_masyarakat, foto, isi_pengaduan, status, dibuat, diubah FROM pengaduan WHERE (status='diproses' OR status='selesai') AND dihapus='0' $extraFilter ORDER BY dibuat DESC;");
                           foreach ($result as $i => $data) {
                             $id = $data["id"];
                             $idMasyarakat = $data["id_masyarakat"];
