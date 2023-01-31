@@ -10,7 +10,7 @@ include "$sourcePath/utilities/session/data.php";
 include "$sourcePath/utilities/role.php";
 include "$sourcePath/utilities/date.php";
 
-roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/authentication/logout.php");
+roleGuardSingle($sessionLevel, "masyarakat", "/$originalPath");
 
 $id = $_GET["id"];
 $resultPengaduan = mysqli_query($connection, "SELECT status FROM pengaduan WHERE id='$id' AND (status='diproses' OR status='selesai') AND dihapus='0';");

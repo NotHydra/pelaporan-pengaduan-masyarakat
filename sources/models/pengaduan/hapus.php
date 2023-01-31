@@ -10,7 +10,7 @@ include "$sourcePath/utilities/session/data.php";
 include "$sourcePath/utilities/role.php";
 include "$sourcePath/utilities/date.php";
 
-roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/authentication/logout.php");
+roleGuardSingle($sessionLevel, "masyarakat", "/$originalPath");
 
 $id = $_GET["id"];
 $result = mysqli_query($connection, "SELECT id FROM pengaduan WHERE id='$id' AND id_masyarakat='$sessionId' AND status='belum direspon' AND dihapus='0';");
