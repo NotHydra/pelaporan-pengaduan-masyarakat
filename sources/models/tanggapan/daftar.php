@@ -129,7 +129,7 @@ if (mysqli_num_rows($resultPengaduan) <= 0) {
                             <?php
                             if ($dataPengaduan["status"] == "diproses") {
                             ?>
-                              <th class="text-center align-middle export">Aksi</th>
+                              <th class="text-center align-middle">Aksi</th>
                             <?php
                             }
                             ?>

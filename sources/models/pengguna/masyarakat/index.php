@@ -120,7 +120,7 @@ roleGuardMinimum($sessionLevel, "administrator", "/$originalPath");
                             <th class="text-center align-middle export">Telepon</th>
                             <th class="text-center align-middle export">Dibuat</th>
                             <th class="text-center align-middle export">Diubah</th>
-                            <th class="text-center align-middle export">Aksi</th>
+                            <th class="text-center align-middle">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
