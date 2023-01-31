@@ -76,9 +76,7 @@ foreach ($inputArray as $inputObject) {
 
     <script src="<?php echo $sourcePath; ?>/public/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <script>
-        $(function() {
-            bsCustomFileInput.init();
-        });
+        bsCustomFileInput.init()
 
         function loadImage(elementId, event) {
             document.getElementById(`${elementId}-image`).src = URL.createObjectURL(event.target.files[0]);
