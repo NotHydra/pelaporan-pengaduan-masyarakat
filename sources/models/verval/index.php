@@ -10,7 +10,7 @@ include "$sourcePath/utilities/session/data.php";
 include "$sourcePath/utilities/role.php";
 include "$sourcePath/utilities/date.php";
 
-roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/authentication/logout.php");
+roleGuardMinimum($sessionLevel, "petugas", "/$originalPath");
 ?>
 
 <!DOCTYPE html>
@@ -144,6 +144,7 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
 
                           $result = mysqli_query($connection, "SELECT id, id_masyarakat, foto, isi_pengaduan, status, dibuat, diubah FROM pengaduan WHERE status!='selesai' AND dihapus='0' $extraFilter ORDER BY dibuat DESC;");
                           foreach ($result as $i => $data) {
+                            $id = $data["id"];
                             $idMasyarakat = $data["id_masyarakat"];
                             $dataMasyarakat = mysqli_fetch_assoc(mysqli_query($connection, "SELECT nik, nama FROM masyarakat WHERE id='$idMasyarakat' AND dihapus='0';"));
                           ?>
@@ -163,17 +164,17 @@ roleGuardMinimum($sessionLevel, "masyarakat", "/$originalPath/sources/models/aut
                                   <?php
                                   if ($data["status"] == "belum direspon") {
                                   ?>
-                                    <a class="btn btn-app bg-success m-0" href="?id=<?php echo $data['id']; ?>&type=terima">
+                                    <a class="btn btn-app bg-success m-0" role="button" onclick="confirmModal('location', '.?id=<?php echo $id; ?>&type=terima');">
                                       <i class="fas fa-check"></i> Terima
                                     </a>
 
-                                    <a class="btn btn-app bg-danger m-0" href="?id=<?php echo $data['id']; ?>&type=tolak">
-                                      <i class="fas fa-times"></i> Tolak
+                                    <a class="btn btn-app bg-danger m-0" role="button" onclick="confirmModal('location', '.?id=<?php echo $id; ?>&type=tolak');">
+                                      <i class=" fas fa-times"></i> Tolak
                                     </a>
                                   <?php
                                   } else if (in_array($data["status"], ["diproses", "ditolak"])) {
                                   ?>
-                                    <a class="btn btn-app bg-warning m-0" href="?id=<?php echo $data['id']; ?>&type=batal">
+                                    <a class="btn btn-app bg-warning m-0" role="button" onclick="confirmModal('location', '.?id=<?php echo $id; ?>&type=batal');">
                                       <i class="fas fa-undo"></i> Batalkan
                                     </a>
                                   <?php
