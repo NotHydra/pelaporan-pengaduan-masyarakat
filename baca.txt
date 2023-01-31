@@ -17,38 +17,37 @@ Commit Message:
 
 To-Do:
     Authentication
-        Login
-            Masyarakat
-            Petugas
+        Login DONE
+            Masyarakat DONE
+            Petugas DONE
 
         Register
             Masyarakat
             Petugas
 
-    Utama
+    Utama DONE
 
-    Pengguna
-        Petugas
-            READ
-            CREATE
+    Pengguna DONE
+        Petugas DONE
+            READ DONE
+            CREATE DONE
 
-            UPDATE
-            CHANGE PASSWORD
-            DELETE
+            UPDATE DONE
+            CHANGE PASSWORD DONE
+            DELETE DONE
 
-        Masyarakat
-            READ
-            CREATE
+        Masyarakat DONE
+            READ DONE
+            CREATE DONE
 
-            UPDATE
-            CHANGE PASSWORD
-            DELETE
+            UPDATE DONE
+            CHANGE PASSWORD DONE
+            DELETE DONE
 
     Pengaduan
         READ SELF
         CREATE SELF
 
-        UPDATE SELF
         DELETE SELF
 
     Verval
@@ -60,14 +59,16 @@ To-Do:
         RESPONSE
         CANCEL
 
-    Laporan
-        Per Tahun
-        Per Bulan
+    Laporan DONE
+        Per Tahun DONE
+        Per Bulan DONE
 
-    Pengaturan
-        Data Pribadi
-            READ
-            UPDATE
-            CHANGE PASSWORD
+    Pengaturan DONE
+        Data Pribadi DONE
+            READ DONE
+            UPDATE DONE
+            CHANGE PASSWORD DONE
 
-        Logout
+        Tema DONE
+
+        Logout DONE

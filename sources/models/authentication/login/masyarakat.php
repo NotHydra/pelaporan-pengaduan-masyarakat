@@ -1,5 +1,5 @@
 <?php
-$sourcePath = "../..";
+$sourcePath = "../../..";
 include "$sourcePath/utilities/environment.php";
 include "$sourcePath/utilities/connection.php";
 include "$sourcePath/utilities/session/start.php";
@@ -15,7 +15,7 @@ include "$sourcePath/utilities/date.php";
 
 <head>
   <?php
-  $headTitle = "Login Petugas";
+  $headTitle = "Login Masyarakat";
   include "$sourcePath/components/head.php";
   include "$sourcePath/utilities/modal.php";
   ?>
@@ -55,18 +55,18 @@ include "$sourcePath/utilities/date.php";
 
           <div class="row">
             <div class="col-sm">
-              <button type="submit" class="btn btn-primary btn-block">Login Petugas</button>
+              <button type="submit" class="btn btn-primary btn-block">Login Masyarakat</button>
             </div>
           </div>
         </form>
 
         <div class="mt-1">
           <p class="mb-0">
-            <a href="./login-masyarakat.php" class="text-center">Login Masyarakat</a>
+            <a href="./petugas.php" class="text-center">Login Petugas</a>
           </p>
 
           <p class="mb-0">
-            <a href="./register-petugas.php" class="text-center">Register Petugas</a>
+            <a href="../register/masyarakat.php" class="text-center">Register Masyarakat</a>
           </p>
         </div>
       </div>
@@ -82,19 +82,15 @@ include "$sourcePath/utilities/date.php";
     $username = $_POST["username"];
     $password = md5($_POST["password"]);
 
-    $result = mysqli_query($connection, "SELECT id, status FROM petugas WHERE username='$username' AND password='$password' AND dihapus='0';");
+    $result = mysqli_query($connection, "SELECT id FROM masyarakat WHERE username='$username' AND password='$password' AND dihapus='0';");
 
     if (mysqli_num_rows($result) > 0) {
       $data = mysqli_fetch_assoc($result);
 
-      if ($data["status"] == "aktif") {
-        $_SESSION["id"] = $data["id"];
-        $_SESSION["type"] = "petugas";
+      $_SESSION["id"] = $data["id"];
+      $_SESSION["type"] = "masyarakat";
 
-        echo "<script>successModal(null, '/$originalPath', 'login-container');</script>";
-      } else {
-        echo "<script>errorModal('Akun belum aktif', null, 'login-container');</script>";
-      }
+      echo "<script>successModal(null, '/$originalPath', 'login-container');</script>";
     } else {
       echo "<script>errorModal('Username atau password salah', null, 'login-container');</script>";
     }
