@@ -7,7 +7,6 @@ include "$sourcePath/utilities/session/start.php";
 include "$sourcePath/middlewares/isAuthenticated.php";
 
 include "$sourcePath/utilities/date.php";
-
 ?>
 
 <!DOCTYPE html>
