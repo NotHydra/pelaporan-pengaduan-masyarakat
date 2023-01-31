@@ -29,18 +29,18 @@
     </a>
 
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
-            <div class="image">
-                <img src="<?php echo $sourcePath; ?>/public/dist/img/user-profile.png" class="img-circle elevation-2" alt="User Profile">
+        <a class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;" href="/<?php echo $originalPath; ?>/sources/models/pengaturan/data-pribadi">
+            <div>
+                <i class="fas fa-user-circle" style="font-size: 2.25rem;"></i>
             </div>
 
             <div class="info">
-                <a class="d-block" href="/<?php echo $originalPath; ?>/sources/models/pengaturan/data-pribadi">
+                <div class="d-block">
                     <p class="h5 m-0 p-0"><?php echo ucwords($sessionUsername); ?></p>
-                    <p class="h6 text-muted m-0 p-0"><?php echo ucwords($sessionLevel); ?></p>
-                </a>
+                    <p class="h6 m-0 p-0" style="opacity: 0.6;"><?php echo ucwords($sessionLevel); ?></p>
+                </div>
             </div>
-        </div>
+        </a>
 
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
