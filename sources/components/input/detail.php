@@ -65,7 +65,7 @@ foreach ($inputArray as $inputObject) {
             <?php
             } else if ($inputObject["type"] == "image") {
             ?>
-                <div class="my-3" style="border: 1px solid #cfd5db; border-radius: 8px; overflow: auto;">
+                <div class="mb-3" style="border: 1px solid #cfd5db; border-radius: 8px; overflow: auto;">
                     <img class="m-auto d-block" id="<?php echo $inputObject["name"]; ?>-image" src="<?php echo $inputObject["value"] == null ? '' : $sourcePath . '/public/dist/img/storage/' . $inputObject["value"]; ?>" height="300px">
                 </div>
         <?php
